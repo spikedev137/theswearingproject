@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Swearing Project – How to find The Magic Pause</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E8472A;
+      --charcoal: #1e1e1e;
+      --warm-white: #faf8f5;
+      --mid: #555;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('The_Swearing_Project.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+      animation: heroZoom 12s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.00); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.05) 0%,
+        rgba(0,0,0,0.15) 40%,
+        rgba(0,0,0,0.72) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 6vw 6vh;
+      animation: fadeUp 1s 0.3s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      color: #fff;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.4rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: #c93820;
+      transform: translateY(-2px);
+    }
+
+    .hero-price {
+      display: inline-block;
+      margin-left: 1.2rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+
+    /* ── STORY ── */
+    .story {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+      animation: fadeUp 1s 0.1s both;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .story h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: var(--charcoal);
+    }
+
+    .story p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 1.4rem;
+      font-weight: 300;
+    }
+
+    .pullquote {
+      border-left: 3px solid var(--orange);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 2.5rem 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: var(--charcoal);
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .inside {
+      background: var(--charcoal);
+      color: #fff;
+      padding: 6rem 2rem;
+    }
+
+    .inside-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .inside h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #fff;
+    }
+
+    .inside-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .inside-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .inside-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.5rem;
+    }
+
+    .inside-item p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      padding-top: 0.4rem;
+    }
+
+    /* ── FOR YOU IF ── */
+    .for-you {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .for-you h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      color: var(--charcoal);
+    }
+
+    .for-you-list {
+      list-style: none;
+    }
+
+    .for-you-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid #e8e5e1;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .for-you-list li::before {
+      content: '→';
+      color: var(--orange);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: var(--orange);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .final-cta p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--orange);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.6rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cta-btn-white:hover {
+      background: #f0ece8;
+      transform: translateY(-2px);
+    }
+
+    .cta-detail {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+    }
+
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-content { padding: 0 5vw 8vw; }
+      .hero-price { display: block; margin: 0.8rem 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Glenn Edley</p>
+      <h1 class="hero-title">The Swearing<br>Project</h1>
+      <p class="hero-subtitle">How to find The Magic Pause</p>
+      <a href="https://glennedley.gumroad.com/l/biyirv" class="hero-cta" target="_blank" rel="noopener">Get the Guide — $12</a>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <p class="section-label">The moment it worked</p>
+    <h2>There was a ute on my side of the road.</h2>
+    <p>As I navigated the twisty country roads home, it came straight at me. My usual reaction would have been instant. Loud. Ugly.</p>
+    <p>Instead, I said: "What the heck!" And smiled.</p>
+    <p>That was the moment I realised my Swearing Project had actually worked.</p>
+
+    <div class="pullquote">
+      I started it as a simple experiment. What I found changed how I react to everything.
+    </div>
+
+    <p>I am what you might call a recovering swearer. Not the casual kind where the odd word slips out at sport or traffic. The kind where it had become a default reaction. A habit so embedded I did not even notice it most of the time.</p>
+    <p>My wife noticed. My kids noticed. And eventually, I noticed too.</p>
+    <p>The experiment started simply: what happens if I just stop? Not cut back. Not try harder. Just stop entirely, and see what happens.</p>
+    <p>What I did not expect was finding something the Stoics have been teaching for centuries. I had never actually experienced it until now.</p>
+    <p><strong>The pause.</strong> This guide is about that. Not swearing, really. The pause.</p>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="inside">
+    <div class="inside-inner">
+      <p class="section-label" style="color: var(--orange);">What's inside</p>
+      <h2>13 pages. Everything that actually worked.</h2>
+      <div class="inside-grid">
+        <div class="inside-item">
+          <span class="inside-num">1</span>
+          <p>Why swearing is a crutch, not a release — and what it's actually doing to your emotions</p>
+        </div>
+        <div class="inside-item">
+          <span class="inside-num">2</span>
+          <p>The Magic Pause — what it is, why it works, and how stopping swearing creates it</p>
+        </div>
+        <div class="inside-item">
+          <span class="inside-num">3</span>
+          <p>The negative interaction cycle — how swearing affects your relationships more than you realise</p>
+        </div>
+        <div class="inside-item">
+          <span class="inside-num">4</span>
+          <p>The myths about swearing, debunked — it's not intelligence, it's not vocabulary, and yes, you can stop</p>
+        </div>
+        <div class="inside-item">
+          <span class="inside-num">5</span>
+          <p>How to run your own 30-day Swearing Project, including what to track and how to handle slip-ups</p>
+        </div>
+        <div class="inside-item">
+          <span class="inside-num">+</span>
+          <p>A simple one-page daily tracker to keep you honest — or an app recommendation I use</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR YOU IF -->
+  <section class="for-you">
+    <p class="section-label">This is for you if</p>
+    <h2>Sound familiar?</h2>
+    <ul class="for-you-list">
+      <li>You swear out of habit and wonder if you could stop</li>
+      <li>You react too quickly and want more control over your emotions</li>
+      <li>Your swearing is affecting your relationships or how others see you</li>
+      <li>You like running personal experiments and testing your own habits</li>
+    </ul>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>It won't take long to read.<br>But it might take a while<br>to stop thinking about.</h2>
+    <p>A short, honest guide based on a personal experiment, and the one thing that actually worked when counting to ten didn't.</p>
+    <a href="https://glennedley.gumroad.com/l/biyirv" class="cta-btn-white" target="_blank" rel="noopener">Get the Guide for $12</a>
+    <p class="cta-detail">13 pages · Instant download · PDF</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© Glenn Edley · <a href="https://theswearingproject.com">theswearingproject.com</a></p>
+  </footer>
+
+</body>
+</html>
